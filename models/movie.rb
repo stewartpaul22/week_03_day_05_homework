@@ -36,6 +36,10 @@ class Movie
     SqlRunner.run(sql, values)
   end
 
-
+  def self.delete_all()
+    sql = "DELETE FROM movies"
+    values =[]
+    SqlRunner.run(sql, values)
+  end
 
 end
