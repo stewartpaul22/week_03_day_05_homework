@@ -27,9 +27,15 @@ class Movie
     sql = "SELECT * FROM movies"
     values = []
     movies = SqlRunner.run(sql, values)
-    return movies.map{|customer| Customer.new(customer)}
+    return movies.map{|movie| Movie.new(movie)}
   end
 
-  
+  def delete()
+    sql = "DELETE FROM movies WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+
 
 end
