@@ -4,8 +4,8 @@ DROP TABLE movies;
 
 CREATE TABLE customers (
   id SERIAL PRIMARY KEY,
-    name VARCHAR(50),
-    funds INT
+  name VARCHAR(50),
+  funds INT
 );
 
 CREATE TABLE movies (
@@ -15,6 +15,7 @@ CREATE TABLE movies (
 );
 
 CREATE TABLE tickets (
+  id SERIAL PRIMARY KEY,
   customer_id INT REFERENCES customers(id) ON DELETE CASCADE,
-  movie_id INT REFERENCES movies(id) ON DELETE CASCADE,
+  movie_id INT REFERENCES movies(id) ON DELETE CASCADE
 );
