@@ -31,6 +31,13 @@ class Customer
     return customers.map{|customer| Customer.new(customer)}
   end
 
+  def movies()
+    sql = "SELECT movies.* FROM movies INNER JOIN tickets ON movies.id = tickets.movie_id WHERE customer_id = $1"
+    values = [@id]
+    movies = SqlRunner.run(sql, values)
+    return movies.map{|movie| Movie.new(movie)}
+  end
+
   def delete()
     sql = "DELETE FROM customers WHERE id = $1"
     values = [@id]
