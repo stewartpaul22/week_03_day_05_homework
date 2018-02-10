@@ -38,6 +38,10 @@ class Movie
     return customers.map{|customer| Customer.new(customer)}
   end
 
+  def number_of_customers()
+    return customers().count()
+  end
+
   def delete()
     sql = "DELETE FROM movies WHERE id = $1"
     values = [@id]
