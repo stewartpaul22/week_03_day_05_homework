@@ -26,8 +26,7 @@ class Customer
 
   def self.all()
     sql = "SELECT * FROM customers"
-    values = []
-    customers = SqlRunner.run(sql, values)
+    customers = SqlRunner.run(sql)
     return customers.map{|customer| Customer.new(customer)}
   end
 
@@ -52,8 +51,7 @@ class Customer
 
   def self.delete_all()
     sql = "DELETE FROM customers"
-    values =[]
-    SqlRunner.run(sql, values)
+    SqlRunner.run(sql)
   end
 
 end
