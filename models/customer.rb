@@ -31,7 +31,13 @@ class Customer
     return customers.map{|customer| Customer.new(customer)}
   end
 
-  def movies()
+  def update_wallet()
+    pending_movies = booked_movies()
+    pending_movies.map { |movie| @funds -= movie.price }
+    edit()
+  end
+
+  def booked_movies()
     sql = "SELECT movies.* FROM movies INNER JOIN tickets ON movies.id = tickets.movie_id WHERE customer_id = $1"
     values = [@id]
     movies = SqlRunner.run(sql, values)
