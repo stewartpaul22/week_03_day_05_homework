@@ -11,4 +11,11 @@ class Screening
     @screening_time = options['screening_time']
   end
 
+  def save()
+    sql = "INSERT INTO screenings (movie_id, screening_time) VALUES ($1, $2) RETURNING id"
+    values = [@movie_id, @screening_time]
+    screening = SqlRunner.run(sql, values).first
+    @id = screening['id'].to_i
+  end
+
 end
