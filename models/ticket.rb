@@ -2,7 +2,8 @@ require_relative('../db/sql_runner.rb')
 
 class Ticket
 
-  attr_accessor :id
+  attr_accessor :movie_id, :customer_id
+  attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -18,6 +19,9 @@ class Ticket
   end
 
   def edit()
+    sql = "UPDATE tickets SET (customer_id, movie_id) = ($1, $2) WHERE id = $3"
+    values = [@customer_id, @movie_id, @id]
+    SqlRunner.run(sql, values)
   end
 
   def self.all()

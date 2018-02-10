@@ -2,7 +2,7 @@ require_relative('../db/sql_runner.rb')
 
 class Customer
 
-  attr_accessor :funds
+  attr_accessor :funds, :name
   attr_reader :id
 
   def initialize(options)
