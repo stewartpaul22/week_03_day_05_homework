@@ -18,4 +18,22 @@ class Screening
     @id = screening['id'].to_i
   end
 
+  def edit()
+    sql = "UPDATE screenings SET (movie_id, screening_time) = ($1, $2) WHERE id = $3"
+    values = [@movie_id, @screening_time, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.all()
+
+  end
+
+  def delete()
+
+  end
+
+  def self.delete_all()
+
+  end
+
 end
