@@ -27,7 +27,7 @@ class Screening
   def self.all()
     sql = "SELECT * FROM screenings"
     screenings = SqlRunner.run(sql)
-    return screenings.map { |screening| Screening.new(screening)}
+    return screenings.map { |screening| Screening.new(screening) }
   end
 
   def delete()

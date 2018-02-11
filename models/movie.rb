@@ -31,6 +31,13 @@ class Movie
     return movies.map{|movie| Movie.new(movie)}
   end
 
+  def screenings()    
+    sql = "SELECT * FROM screenings WHERE movie_id = $1"
+    values = [@id]
+    screenings = SqlRunner.run(sql, values)
+    return screenings.map { |screening| Screening.new(screening) }
+  end
+
   def customers()
     sql = "SELECT customers.* FROM customers INNER JOIN tickets ON customers.id = tickets.customer_id WHERE movie_id = $1"
     values = [@id]
